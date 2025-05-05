@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PersonnelApi</name>
+    </assembly>
+    <members>
+        <member name="T:PersonnelApi.Controllers.EmployeesController">
+            <summary>
+            Controller for managing employee resources.
+            </summary>
+        </member>
+        <member name="M:PersonnelApi.Controllers.EmployeesController.#ctor(PersonnelApi.Repositories.IEmployeeRepository)">
+            <summary>
+            Initializes a new instance of the EmployeesController.
+            </summary>
+            <param name="repo">The employee repository.</param>
+        </member>
+        <member name="M:PersonnelApi.Controllers.EmployeesController.GetAll">
+            <summary>
+            Retrieves all employees.
+            </summary>
+            <returns>A list of all employees.</returns>
+            <response code="200">Returns the list of employees</response>
+        </member>
+        <member name="M:PersonnelApi.Controllers.EmployeesController.Create(PersonnelApi.DTOs.CreateEmployeeDto)">
+            <summary>
+            Creates a new employee.
+            </summary>
+            <param name="dto">The employee creation data.</param>
+            <returns>The created employee.</returns>
+            <response code="201">Returns the newly created employee</response>
+            <response code="409">If an employee with the same email already exists</response>
+        </member>
+        <member name="M:PersonnelApi.Controllers.EmployeesController.Delete(System.Guid)">
+            <summary>
+            Deletes an employee by ID.
+            </summary>
+            <param name="id">The ID of the employee to delete.</param>
+            <returns>No content if successful, not found if employee doesn't exist.</returns>
+            <response code="204">If the employee was successfully deleted</response>
+            <response code="404">If the employee was not found</response>
+        </member>
+        <member name="T:PersonnelApi.DTOs.CreateEmployeeDto">
+            <summary>
+            Data Transfer Object for creating a new employee.
+            </summary>
+        </member>
+        <member name="P:PersonnelApi.DTOs.CreateEmployeeDto.FirstName">
+            <summary>
+            Gets or sets the employee's first name.
+            Required field.
+            </summary>
+        </member>
+        <member name="P:PersonnelApi.DTOs.CreateEmployeeDto.LastName">
+            <summary>
+            Gets or sets the employee's last name.
+            Required field.
+            </summary>
+        </member>
+        <member name="P:PersonnelApi.DTOs.CreateEmployeeDto.Email">
+            <summary>
+            Gets or sets the employee's email address.
+            Must be unique in the system.
+            Required field.
+            </summary>
+        </member>
+        <member name="T:PersonnelApi.DTOs.EmployeeDto">
+            <summary>
+            Data Transfer Object for returning employee information through the API.
+            </summary>
+        </member>
+        <member name="P:PersonnelApi.DTOs.EmployeeDto.Id">
+            <summary>
+            Gets or sets the unique identifier of the employee.
+            </summary>
+        </member>
+        <member name="P:PersonnelApi.DTOs.EmployeeDto.FirstName">
+            <summary>
+            Gets or sets the employee's first name.
+            </summary>
+        </member>
+        <member name="P:PersonnelApi.DTOs.EmployeeDto.LastName">
+            <summary>
+            Gets or sets the employee's last name.
+            </summary>
+        </member>
+        <member name="P:PersonnelApi.DTOs.EmployeeDto.Email">
+            <summary>
+            Gets or sets the employee's email address.
+            </summary>
+        </member>
+        <member name="T:PersonnelApi.Models.Employee">
+            <summary>
+            Represents an employee in the system.
+            </summary>
+        </member>
+        <member name="P:PersonnelApi.Models.Employee.Id">
+            <summary>
+            Gets or sets the unique identifier for the employee.
+            </summary>
+        </member>
+        <member name="P:PersonnelApi.Models.Employee.FirstName">
+            <summary>
+            Gets or sets the employee's first name.
+            </summary>
+        </member>
+        <member name="P:PersonnelApi.Models.Employee.LastName">
+            <summary>
+            Gets or sets the employee's last name.
+            </summary>
+        </member>
+        <member name="P:PersonnelApi.Models.Employee.Email">
+            <summary>
+            Gets or sets the employee's email address.
+            Must be unique within the system.
+            </summary>
+        </member>
+        <member name="T:PersonnelApi.Repositories.IEmployeeRepository">
+            <summary>
+            Defines the contract for employee data operations.
+            </summary>
+        </member>
+        <member name="M:PersonnelApi.Repositories.IEmployeeRepository.GetAllAsync">
+            <summary>
+            Retrieves all employees asynchronously.
+            </summary>
+            <returns>A collection of all employees in the system.</returns>
+        </member>
+        <member name="M:PersonnelApi.Repositories.IEmployeeRepository.GetByEmailAsync(System.String)">
+            <summary>
+            Retrieves an employee by their email address.
+            </summary>
+            <param name="email">The email address to search for.</param>
+            <returns>The employee if found; null otherwise.</returns>
+        </member>
+        <member name="M:PersonnelApi.Repositories.IEmployeeRepository.AddAsync(PersonnelApi.Models.Employee)">
+            <summary>
+            Adds a new employee to the system.
+            </summary>
+            <param name="employee">The employee to add.</param>
+            <returns>A task representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:PersonnelApi.Repositories.IEmployeeRepository.DeleteAsync(System.Guid)">
+            <summary>
+            Deletes an employee by their ID.
+            </summary>
+            <param name="id">The unique identifier of the employee to delete.</param>
+            <returns>True if the employee was deleted; false if the employee was not found.</returns>
+        </member>
+    </members>
+</doc>
